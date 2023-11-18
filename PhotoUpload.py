@@ -5,7 +5,12 @@ from PIL import ImageTk, Image
 
 def selectPicture():
     global img
-    filename = filedialog.askopenfilename(initialdir="/images", title="Select Image",filetypes=(("png images","*.png"),("jpg images","*.jpg"),("jpeg images","*.jpeg"),("bmp images","*.bmp")))
+    filename = filedialog.askopenfilename(initialdir="/images", title="Select Image",filetypes=[
+                    ("image", ".jpeg"),
+                    ("image", ".png"),
+                    ("image", ".jpg"),
+                    ("image", ".bmp"),
+                ])
     img = Image.open(filename)
     img = img.resize((200,200))
     img = ImageTk.PhotoImage(img)
