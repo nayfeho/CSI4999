@@ -17,7 +17,12 @@ from PIL import ImageTk, Image
 def selectPicture():
     global img
     global picture_path
-    filename = filedialog.askopenfilename(initialdir="/images", title="Select Image",filetypes=(("png images","*.png"),("jpg images","*.jpg"),("jpeg images","*.jpeg"),("bmp images","*.bmp")))
+    filename = filedialog.askopenfilename(initialdir="/images", title="Select Image",filetypes=[
+                    (".jpg, .jpeg, .png, .bmp", ".jpeg"),
+                    (".jpg, .jpeg, .png, .bmp", ".png"),
+                    (".jpg, .jpeg, .png, .bmp", ".jpg"),
+                    (".jpg, .jpeg, .png, .bmp", ".bmp"),
+                ])
     img = Image.open(filename)
     img = img.resize((200,200))
     img = ImageTk.PhotoImage(img)
