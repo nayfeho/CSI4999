@@ -6,10 +6,10 @@ from PIL import ImageTk, Image
 def selectPicture():
     global img
     filename = filedialog.askopenfilename(initialdir="/images", title="Select Image",filetypes=[
-                    ("image", ".jpeg"),
-                    ("image", ".png"),
-                    ("image", ".jpg"),
-                    ("image", ".bmp"),
+                    (".jpg, .jpeg, .png, .bmp", ".jpeg"),
+                    (".jpg, .jpeg, .png, .bmp", ".png"),
+                    (".jpg, .jpeg, .png, .bmp", ".jpg"),
+                    (".jpg, .jpeg, .png, .bmp", ".bmp"),
                 ])
     img = Image.open(filename)
     img = img.resize((200,200))
