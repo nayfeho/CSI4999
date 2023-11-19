@@ -39,7 +39,8 @@ def selectPicture():
             result = round(100*(1-melanomapred[0][0]), 2)
         else:
             result = round(100*melanomapred[0][0], 2)
-        result_label['text'] = f"Prediction: {'Benign ' + str(result) + '% Certainty' if melanomapred < 0.50 else 'Melanoma ' + str(result) + '% Certainty'}"
+        prediction_label['text'] = f"Prediction: {'Benign ' if melanomapred < 0.50 else 'Melanoma '}"
+        certainty_label['text'] = f"Certainty: {str(result) + '%'}"
 
 
 window = tk.Tk()
@@ -48,15 +49,17 @@ DEFAULT_SIZE = "600x400"
 window.title(NAME)
 window.geometry(DEFAULT_SIZE)
 
-result_label = tk.Label(window, text="Prediction: ")
+prediction_label = tk.Label(window)
+certainty_label = tk.Label(window)
 #myLabel= Label(window, text= result ).place(x=50, y=50)
 show_picture = tk.Label(window)
-browse = tk.Button(window, text='Select Image',bg='grey', fg='#ffffff',)
+browse = tk.Button(window, text='Select Image',bg='#ffffff', fg='#000000',)
 
 browse['command'] = selectPicture
 
-show_picture.place(x=190, y= 75)
-browse.place(x=250, y=350)
-result_label.place(x=250, y=20)
+prediction_label.pack(side=tk.TOP)
+certainty_label.pack(side=tk.TOP)
+show_picture.pack(side=tk.TOP)
+browse.pack(side=tk.TOP)
 
 window.mainloop()
